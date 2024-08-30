@@ -214,7 +214,8 @@ export async function migrate(): Promise<void> {
     const executions: Execution[] = [];
 
     if (user.is_guest === 1) {
-      fatal(`Migration of guest users is not supported: ${user.name}`);
+      warn(`Skipping guest user ${user.name}`);
+      continue;
     }
 
     // users => users
